@@ -4,29 +4,29 @@ using System.Collections;
 public class ControllerInput : MonoBehaviour
 {
 		Ctrl ctrl = new Ctrl ();
-		GameObject LStick ;
-		GameObject RStick ;
-		GameObject DPad ;
-		GameObject A;
-		GameObject B;
-		GameObject X;
-		GameObject Y;
-		GameObject LTrigger;
-		GameObject RTrigger;
-		GameObject LShoulder;
-		GameObject RShoulder;
-		GameObject StartBut;
-		GameObject Back;
+		GameObject LStick,
+				RStick,
+				DPad,
+				A,
+				B,
+				X,
+				Y,
+				LTrigger,
+				RTrigger,
+				LShoulder,
+				RShoulder,
+				StartBut,
+				Back;
 
 
-		Vector3 Aposition;
-		Vector3 Bposition;
-		Vector3 Xposition;
-		Vector3 Yposition;
-		Vector3 StartButPosition;
-		Vector3 BackPosition;
-		Vector3 LStickPosition;
-		Vector3 RStickPosition;
+		Vector3 Aposition,
+				Bposition,
+				Xposition,
+				Yposition,
+				StartButPosition,
+				BackPosition,
+				LStickPosition,
+				RStickPosition;
 
 		// Use this for initialization
 		void Start ()
