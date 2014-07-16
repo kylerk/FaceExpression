@@ -4,7 +4,8 @@ using System.Collections;
 public class CameraSpin : MonoBehaviour
 {		
 		Ctrl ctrl ;
-		float spinSpeed;
+		float spinSpeedx;
+		float spinSpeedy;
 		void Start ()
 		{
 				ctrl = ControllerInput.ctrl;
@@ -14,8 +15,11 @@ public class CameraSpin : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+				if (ctrl.LTrigger > 0.2) {
+						spinSpeedx = -ctrl.LXStick * ctrl.LTrigger;
+						spinSpeedy = -ctrl.LYStick * ctrl.LTrigger;
+						transform.Rotate (10f * spinSpeedy, 10f * spinSpeedx, 0);
+				}
 
-				//spinSpeed = ctrl.LTrigger * ctrl.RTrigger ;
-				transform.Rotate (0, 10f * spinSpeed, 0);
 		}
 }

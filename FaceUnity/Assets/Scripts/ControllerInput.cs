@@ -100,7 +100,7 @@ public class ControllerInput : MonoBehaviour
 						GUI.Box (new Rect (050 * i, 
 			                  					0, 
 			                   					50, 
-			                   					100.0f + (float)field.GetValue (ctrl) * 400.0f),
+			                   					100.0f + (float)field.GetValue (ctrl) * 50.0f),
 
 			        				 field.Name + "\n" + ((float)field.GetValue (ctrl)).ToString ("F2"));
 
@@ -118,9 +118,9 @@ public class ControllerInput : MonoBehaviour
 		void StickTilt (GameObject StickObj, float tiltRange, float inputX, float inputY)
 		{
 				StickObj.transform.eulerAngles = new Vector3 (
-			Mathf.Lerp (0, tiltRange, inputY) - tiltRange / 2,
+			Mathf.Lerp (0, tiltRange, (inputY + 1) / 2) - tiltRange / 2,
 			0,
-			Mathf.Lerp (0, tiltRange, inputX) - tiltRange / 2);
+			Mathf.Lerp (0, tiltRange, (inputX + 1) / 2) - tiltRange / 2);
 				
 		}
 
@@ -177,13 +177,13 @@ public class Ctrl  ////  THe Class where the inputs reside.
 
 		public void updateCtrl ()
 		{
-				LYStick = (Input.GetAxis ("LYStick") + 1) / 2;
-				LXStick = (Input.GetAxis ("LXStick") + 1) / 2;
-				RYStick = (Input.GetAxis ("RYStick") + 1) / 2;
-				RXStick = (Input.GetAxis ("RXStick") + 1) / 2;
+				LYStick = (Input.GetAxis ("LYStick"));
+				LXStick = (Input.GetAxis ("LXStick"));
+				RYStick = (Input.GetAxis ("RYStick"));
+				RXStick = (Input.GetAxis ("RXStick"));
 
-				DYPad = (Input.GetAxis ("DYPad") + 1) / 2;
-				DXPad = (Input.GetAxis ("DXPad") + 1) / 2;
+				DYPad = (Input.GetAxis ("DYPad"));
+				DXPad = (Input.GetAxis ("DXPad"));
 
 				A = (Input.GetAxis ("A"));
 				B = (Input.GetAxis ("B"));
