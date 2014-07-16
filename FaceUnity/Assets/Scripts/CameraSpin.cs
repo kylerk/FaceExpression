@@ -2,17 +2,20 @@
 using System.Collections;
 
 public class CameraSpin : MonoBehaviour
-{
-
-		// Use this for initialization
+{		
+		Ctrl ctrl ;
+		float spinSpeed;
 		void Start ()
 		{
-	
+				ctrl = ControllerInput.ctrl;
+		
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				transform.Rotate (0, 0.5f, 0);
+
+				//spinSpeed = ctrl.LTrigger * ctrl.RTrigger ;
+				transform.Rotate (0, 10f * spinSpeed, 0);
 		}
 }

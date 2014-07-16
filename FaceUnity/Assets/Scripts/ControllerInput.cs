@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Reflection;
 
 public class ControllerInput : MonoBehaviour
 {
-		Ctrl ctrl = new Ctrl ();
+		
+		public static Ctrl ctrl = new Ctrl () ;
+	
 		GameObject LStick,
 				RStick,
 				DPad,
@@ -17,8 +20,7 @@ public class ControllerInput : MonoBehaviour
 				RShoulder,
 				StartBut,
 				Back;
-
-
+	
 		Vector3 Aposition,
 				Bposition,
 				Xposition,
@@ -28,7 +30,6 @@ public class ControllerInput : MonoBehaviour
 				LStickPosition,
 				RStickPosition;
 
-		// Use this for initialization
 		void Start ()
 		{
 				LStick = GameObject.Find ("LStick");
@@ -44,8 +45,7 @@ public class ControllerInput : MonoBehaviour
 				RShoulder = GameObject.Find ("RShoulder");
 				StartBut = GameObject.Find ("Start");
 				Back = GameObject.Find ("Select");
-
-		 
+						 
 				Aposition = A.transform.position;
 				Bposition = B.transform.position;
 				Xposition = X.transform.position;
@@ -54,6 +54,9 @@ public class ControllerInput : MonoBehaviour
 				BackPosition = Back.transform.position;
 				LStickPosition = LStick.transform.position;
 				RStickPosition = RStick.transform.position;
+
+				
+
 		}
 
 		// Update is called once per frame
@@ -61,6 +64,8 @@ public class ControllerInput : MonoBehaviour
 		{
 			
 				ctrl.updateCtrl ();
+
+
 				StickTilt (LStick, 60, ctrl.LXStick, ctrl.LYStick);
 				StickTilt (RStick, 60, ctrl.RXStick, ctrl.RYStick);
 				ButtonPress (LStick, LStickPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.LStickButton);
@@ -86,6 +91,25 @@ public class ControllerInput : MonoBehaviour
 				
 
 		}
+
+		void OnGUI ()
+		{
+				
+				
+			
+				int i = 0;
+				foreach (FieldInfo field in ctrl.GetType().GetFields()) {
+						
+						GUI.Box (new Rect (050 * i, 0, 50, 100.0f + (float)field.GetValue (ctrl) * 400.0f), field.Name + "\n" + ((float)field.GetValue (ctrl)).ToString ("F2"));			
+						i++;
+						//	Debug.Log (w.ToString ("F1"));
+				}
+
+		}
+
+
+
+
 
 		void StickTilt (GameObject StickObj, float tiltRange, float inputX, float inputY)
 		{
@@ -120,6 +144,13 @@ public class ControllerInput : MonoBehaviour
 			0);
 		}
 
+		void GraphInputs (Ctrl ctrl)
+		{
+
+
+		}
+
+
 
 }
 
@@ -144,6 +175,9 @@ public class Ctrl  ////
 		public float RShoulder;
 		public float LStickButton;
 		public float RStickButton;	
+
+
+
 
 		public void updateCtrl ()
 		{
