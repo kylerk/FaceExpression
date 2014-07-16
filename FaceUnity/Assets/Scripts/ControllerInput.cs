@@ -6,7 +6,8 @@ public class ControllerInput : MonoBehaviour
 {
 		
 		public static Ctrl ctrl = new Ctrl () ;
-	
+
+		//Gameobjects to Hold all the pieces of the Game Controller Model
 		GameObject LStick,
 				RStick,
 				DPad,
@@ -20,7 +21,7 @@ public class ControllerInput : MonoBehaviour
 				RShoulder,
 				StartBut,
 				Back;
-	
+		// Vector3 to hold the Initial Position of some of the pieces of the model
 		Vector3 Aposition,
 				Bposition,
 				Xposition,
@@ -32,6 +33,7 @@ public class ControllerInput : MonoBehaviour
 
 		void Start ()
 		{
+				//Link the Game Object Holders to the 
 				LStick = GameObject.Find ("LStick");
 				RStick = GameObject.Find ("RStick");
 				DPad = GameObject.Find ("DirPad");
@@ -88,20 +90,22 @@ public class ControllerInput : MonoBehaviour
 				ButtonPress (StartBut, StartButPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.Start);
 				ButtonPress (Back, BackPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.Back);
 
-				
-
 		}
 
 		void OnGUI ()
 		{
-				
-				
-			
 				int i = 0;
 				foreach (FieldInfo field in ctrl.GetType().GetFields()) {
 						
-						GUI.Box (new Rect (050 * i, 0, 50, 100.0f + (float)field.GetValue (ctrl) * 400.0f), field.Name + "\n" + ((float)field.GetValue (ctrl)).ToString ("F2"));			
+						GUI.Box (new Rect (050 * i, 
+			                  					0, 
+			                   					50, 
+			                   					100.0f + (float)field.GetValue (ctrl) * 400.0f),
+
+			        				 field.Name + "\n" + ((float)field.GetValue (ctrl)).ToString ("F2"));
+
 						i++;
+
 						//	Debug.Log (w.ToString ("F1"));
 				}
 
@@ -144,17 +148,12 @@ public class ControllerInput : MonoBehaviour
 			0);
 		}
 
-		void GraphInputs (Ctrl ctrl)
-		{
-
-
-		}
 
 
 
 }
 
-public class Ctrl  ////
+public class Ctrl  ////  THe Class where the inputs reside.
 {
 
 		public float LYStick;
@@ -175,9 +174,6 @@ public class Ctrl  ////
 		public float RShoulder;
 		public float LStickButton;
 		public float RStickButton;	
-
-
-
 
 		public void updateCtrl ()
 		{
