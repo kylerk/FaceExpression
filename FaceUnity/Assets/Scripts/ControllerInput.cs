@@ -5,10 +5,10 @@ using System.Reflection;
 public class ControllerInput : MonoBehaviour
 {
 		
-		public static Ctrl ctrl = new Ctrl () ;
+		//	public static Ctrl ctrl = new Ctrl () ;
 
 		//Gameobjects to Hold all the pieces of the Game Controller Model
-		GameObject LStick,
+		GameObject 	LStick,
 				RStick,
 				DPad,
 				A,
@@ -65,44 +65,44 @@ public class ControllerInput : MonoBehaviour
 		void Update ()
 		{
 			
-				ctrl.updateCtrl ();
+				Ctrl.updateCtrl ();
 
 
-				StickTilt (LStick, 60, ctrl.LXStick, ctrl.LYStick);
-				StickTilt (RStick, 60, ctrl.RXStick, ctrl.RYStick);
-				ButtonPress (LStick, LStickPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.LStickButton);
-				ButtonPress (RStick, RStickPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.RStickButton);
+				StickTilt (LStick, 60, Ctrl.LXStick, Ctrl.LYStick);
+				StickTilt (RStick, 60, Ctrl.RXStick, Ctrl.RYStick);
+				ButtonPress (LStick, LStickPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.LStickButton);
+				ButtonPress (RStick, RStickPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.RStickButton);
 
-				StickTilt (DPad, 30, ctrl.DXPad, ctrl.DYPad);
+				StickTilt (DPad, 30, Ctrl.DXPad, Ctrl.DYPad);
 				
-				TriggerTilt (LTrigger, 60, ctrl.LTrigger);
-				TriggerTilt (RTrigger, 60, ctrl.RTrigger);
+				TriggerTilt (LTrigger, 60, Ctrl.LTrigger);
+				TriggerTilt (RTrigger, 60, Ctrl.RTrigger);
 
-				ShoulderTilt (LShoulder, 20, ctrl.LShoulder);
-				ShoulderTilt (RShoulder, -20, ctrl.RShoulder);
+				ShoulderTilt (LShoulder, 20, Ctrl.LShoulder);
+				ShoulderTilt (RShoulder, -20, Ctrl.RShoulder);
 				//A.transform.position = new Vector3 (ctrl.A, 0, 0);
 
 				
-				ButtonPress (A, Aposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.A);
-				ButtonPress (B, Bposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.B);
-				ButtonPress (X, Xposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.X);
-				ButtonPress (Y, Yposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.Y);
-				ButtonPress (StartBut, StartButPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.Start);
-				ButtonPress (Back, BackPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), ctrl.Back);
+				ButtonPress (A, Aposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.A);
+				ButtonPress (B, Bposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.B);
+				ButtonPress (X, Xposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.X);
+				ButtonPress (Y, Yposition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.Y);
+				ButtonPress (StartBut, StartButPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.Start);
+				ButtonPress (Back, BackPosition, new Vector3 (0, -3, 0), new Vector3 (1.4f, 0.5f, 1.4f), Ctrl.Back);
 
 		}
 
 		void OnGUI ()
 		{
 				int i = 0;
-				foreach (FieldInfo field in ctrl.GetType().GetFields()) {
+				foreach (FieldInfo field in typeof(Ctrl).GetFields()) {
 						
 						GUI.Box (new Rect (050 * i, 
 			                  					0, 
 			                   					50, 
-			                   					100.0f + (float)field.GetValue (ctrl) * 50.0f),
+			                   					100.0f + (float)field.GetValue (typeof(Ctrl)) * 50.0f),
 
-			        				 field.Name + "\n" + ((float)field.GetValue (ctrl)).ToString ("F2"));
+			         field.Name + "\n" + ((float)field.GetValue (typeof(Ctrl))).ToString ("F2"));
 
 						i++;
 
@@ -153,29 +153,29 @@ public class ControllerInput : MonoBehaviour
 
 }
 
-public class Ctrl  ////  THe Class where the inputs reside.
+public static class Ctrl  ////  THe Class where the inputs reside.
 {
 
-		public float LYStick;
-		public float LXStick;
-		public float RYStick;
-		public float RXStick;
-		public float DYPad;
-		public float DXPad;
-		public float A;
-		public float B;
-		public float X;
-		public float Y;
-		public float Start;
-		public float Back;
-		public float LTrigger;
-		public float RTrigger;
-		public float LShoulder;
-		public float RShoulder;
-		public float LStickButton;
-		public float RStickButton;	
+		public static float LYStick,
+				LXStick,
+				RYStick,
+				RXStick,
+				DYPad,
+				DXPad,
+				A,
+				B,
+				X,
+				Y,
+				Start,
+				Back,
+				LTrigger,
+				RTrigger,
+				LShoulder,
+				RShoulder,
+				LStickButton,
+				RStickButton;	
 
-		public void updateCtrl ()
+		public static void updateCtrl ()
 		{
 				LYStick = (Input.GetAxis ("LYStick"));
 				LXStick = (Input.GetAxis ("LXStick"));
