@@ -117,7 +117,7 @@ public class ControllerInput : MonoBehaviour
 
 		void StickTilt (GameObject StickObj, float tiltRange, float inputX, float inputY)
 		{
-				StickObj.transform.eulerAngles = new Vector3 (
+				StickObj.transform.localEulerAngles = new Vector3 (
 			Mathf.Lerp (0, tiltRange, (inputY + 1) / 2) - tiltRange / 2,
 			0,
 			Mathf.Lerp (0, tiltRange, (inputX + 1) / 2) - tiltRange / 2);
@@ -132,7 +132,7 @@ public class ControllerInput : MonoBehaviour
 
 		void TriggerTilt (GameObject TriggerObj, float tiltRange, float input)
 		{
-				TriggerObj.transform.eulerAngles = new Vector3 (
+				TriggerObj.transform.localEulerAngles = new Vector3 (
 
 			Mathf.Lerp (0, -tiltRange, input),
 			0,
@@ -141,7 +141,7 @@ public class ControllerInput : MonoBehaviour
 
 		void ShoulderTilt (GameObject ShoulderObj, float tiltRange, float input)
 		{
-				ShoulderObj.transform.eulerAngles = new Vector3 (
+				ShoulderObj.transform.localEulerAngles = new Vector3 (
 			0,
 			Mathf.Lerp (0, -tiltRange, input),
 
