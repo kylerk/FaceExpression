@@ -96,16 +96,18 @@ public class ControllerInput : MonoBehaviour
 		{
 				int i = 0;
 				foreach (FieldInfo field in typeof(Ctrl).GetFields()) {
-						
-						GUI.Box (new Rect (050 * i, 
+					
+						if (field.GetValue (typeof(Ctrl)).GetType () != typeof(bool)) {
+
+								GUI.Box (new Rect (051 * i, 
 			                  					0, 
 			                   					50, 
 			                   					100.0f + (float)field.GetValue (typeof(Ctrl)) * 50.0f),
 
 			         field.Name + "\n" + ((float)field.GetValue (typeof(Ctrl))).ToString ("F2"));
-
+						}
 						i++;
-
+						
 						//	Debug.Log (w.ToString ("F1"));
 				}
 
@@ -175,6 +177,8 @@ public static class Ctrl  ////  THe Class where the inputs reside.
 				LStickButton,
 				RStickButton;	
 
+		public static bool APressed;
+
 		public static void updateCtrl ()
 		{
 				LYStick = (Input.GetAxis ("LYStick"));
@@ -186,6 +190,7 @@ public static class Ctrl  ////  THe Class where the inputs reside.
 				DXPad = (Input.GetAxis ("DXPad"));
 
 				A = (Input.GetAxis ("A"));
+				APressed = (Input.GetButtonDown ("A"));
 				B = (Input.GetAxis ("B"));
 				X = (Input.GetAxis ("X"));
 				Y = (Input.GetAxis ("Y"));

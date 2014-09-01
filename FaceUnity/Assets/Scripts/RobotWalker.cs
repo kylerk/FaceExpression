@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RobotWalker : MonoBehaviour
 {
-		bool newPosition = true;
+		
 		RaycastHit hit;
 		float heading = 0f;
 		GameObject Robot;

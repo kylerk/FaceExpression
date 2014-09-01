@@ -28,7 +28,7 @@ public class CameraSpin : MonoBehaviour
 				}
 				
 				//Here we determine how much speed is being added to the current speed, both based on the inputs
-				spinSpeedxyz += new Vector3 (-Ctrl.RXStick, Ctrl.RYStick, Ctrl.LYStick) * stickForce 
+				spinSpeedxyz += new Vector3 (-Ctrl.RXStick, Ctrl.RYStick, Ctrl.LShoulder - Ctrl.RShoulder) * stickForce 
 				//and how much acceleration is due to the settle Gravity		
 						+ (settleTarget - xyz) * settleGravity;
 				
