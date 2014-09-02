@@ -19,7 +19,7 @@ public class CreateCapsules : MonoBehaviour
 
 				if (Ctrl.APressed) {
 						GameObject newCapsule = Instantiate (capsule) as GameObject;
-						newCapsule.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2;
+						newCapsule.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 50;
 
 				}
 			

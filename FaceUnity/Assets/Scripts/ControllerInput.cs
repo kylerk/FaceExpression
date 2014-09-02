@@ -94,23 +94,25 @@ public class ControllerInput : MonoBehaviour
 
 		void OnGUI ()
 		{
-				int i = 0;
-				foreach (FieldInfo field in typeof(Ctrl).GetFields()) {
+				//Easy guiSwitch
+				if (false) {
+						int i = 0;
+						foreach (FieldInfo field in typeof(Ctrl).GetFields()) {
 					
-						if (field.GetValue (typeof(Ctrl)).GetType () != typeof(bool)) {
+								if (field.GetValue (typeof(Ctrl)).GetType () != typeof(bool)) {
 
-								GUI.Box (new Rect (051 * i, 
+										GUI.Box (new Rect (051 * i, 
 			                  					0, 
 			                   					50, 
 			                   					100.0f + (float)field.GetValue (typeof(Ctrl)) * 50.0f),
 
 			         field.Name + "\n" + ((float)field.GetValue (typeof(Ctrl))).ToString ("F2"));
-						}
-						i++;
+								}
+								i++;
 						
-						//	Debug.Log (w.ToString ("F1"));
+								//	Debug.Log (w.ToString ("F1"));
+						}
 				}
-
 		}
 
 

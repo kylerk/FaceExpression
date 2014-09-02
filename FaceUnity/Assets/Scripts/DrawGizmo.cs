@@ -8,7 +8,7 @@ public class DrawGizmo : MonoBehaviour
 
 		void OnDrawGizmos ()
 		{
-				Gizmos.DrawWireSphere (transform.position, GetComponent<Attractor> ().attractionForce * 1000);
+				Gizmos.DrawWireSphere (transform.position, GetComponent<Attractor> ().attractionForce * 1);
 		}
 
 }
