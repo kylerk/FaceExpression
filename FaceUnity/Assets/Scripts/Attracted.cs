@@ -7,6 +7,8 @@ public class Attracted : MonoBehaviour
 
 		Vector3 speed;
 		public float friction;
+//to prevent crazy speed increases
+		public float minDistance;
 		Attractor[] Attractors;
 
 		// Use this for initialization
@@ -43,6 +45,10 @@ public class Attracted : MonoBehaviour
 					
 						foreach (Attractor thisAttractor in Attractors) {
 								float distance = (thisAttractor.transform.position - transform.position).magnitude;
+
+								if (distance < minDistance) {
+										distance = 100f;
+								}
 								speed += (thisAttractor.transform.position - transform.position).normalized * thisAttractor.attractionForce / distance / distance * 100000;
 						}
 

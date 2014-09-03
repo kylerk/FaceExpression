@@ -179,8 +179,12 @@ public static class Ctrl  ////  THe Class where the inputs reside.
 				LStickButton,
 				RStickButton;	
 
-		public static bool APressed;
-
+		public static bool 	
+				APressed,
+				BPressed,
+				XPressed,
+				YPressed;
+		
 		public static void updateCtrl ()
 		{
 				LYStick = (Input.GetAxis ("LYStick"));
@@ -194,8 +198,11 @@ public static class Ctrl  ////  THe Class where the inputs reside.
 				A = (Input.GetAxis ("A"));
 				APressed = (Input.GetButtonDown ("A"));
 				B = (Input.GetAxis ("B"));
+				BPressed = (Input.GetButtonDown ("B"));
 				X = (Input.GetAxis ("X"));
+				XPressed = (Input.GetButtonDown ("X"));
 				Y = (Input.GetAxis ("Y"));
+				YPressed = (Input.GetButtonDown ("Y"));
 
 				Start = (Input.GetAxis ("Start"));
 				Back = (Input.GetAxis ("Back"));

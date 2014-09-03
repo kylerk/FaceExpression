@@ -13,10 +13,5 @@ public class Attractor : MonoBehaviour
 		}
 	
 		// Update is called once per frame
-		void Update ()
-		{
-
-				// Just a control to make sure the attractor is working.
-				transform.Translate (-Ctrl.DXPad, -Ctrl.DYPad, 0);
-		}
+		
 }
