@@ -12,10 +12,11 @@ public class RobotWalker : MonoBehaviour
 		public float lateralAngle;
 		public float speed;
 		RaycastHit hit;
-		float heading = 0f;
 		GameObject robot;
 		int layerMask = 1 << 8;
 		Vector3 robotAverageNormal;
+		public GameObject polevector;
+		GameObject pointer;
 
 		// Use this for initialization
 		void Start ()
@@ -24,33 +25,36 @@ public class RobotWalker : MonoBehaviour
 				transform.position = hit.point;
 				transform.up = hit.normal;
 				robot = GameObject.Find ("Robot");
+				pointer = new GameObject ();
+				pointer.transform.position = transform.position;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-				//Debug.DrawRay (transform.position, transform.up * 30, Color.green, 10.0f);
 				
-				//transform.localPosition += robot.transform.forward * -Ctrl.LYStick;
 				Vector3 newposition = transform.position 
-						+ robot.transform.forward * -Ctrl.LYStick
+						+ robot.transform.forward * -Ctrl.LYStick * speed
 						+ transform.up * 5.0f;
 							
 				if (Physics.Raycast (newposition, -transform.up, out hit, 1000.0f, layerMask)) {
-						
-
-						Debug.DrawLine (newposition, hit.point, Color.cyan, 12.0f);
+						//	Debug.DrawLine (newposition, hit.point, Color.cyan, 12.0f);
 				
+		
 						
 				}
+				
+				
+				//  Old version,  Now we have a max speed. transform.position = hit.point;
+		
+				Vector3 moveVector = hit.point - transform.position;
+				if (moveVector.magnitude > speed) {
+						transform.position += moveVector.normalized * speed;
+				} else {
+						transform.position += moveVector;
+				}
 
-				
-				transform.position = hit.point;
-				
-			
 				robotAverageNormal = Vector3.zero;
-			
-
 				for (int j = -3; j<3; j++) {
 						for (int i=-10; i<10; i++) {
 								float heightDetect = walkDetect.Evaluate (i / 10f);
@@ -64,8 +68,8 @@ public class RobotWalker : MonoBehaviour
 										+ -robot.transform.right * j * lateralAngle
 				                  		);
 								if (Physics.Raycast (pointA, pointB, out hit, distanceDetect, layerMask)) {
-										Debug.DrawRay (pointA, pointB, Color.magenta, 0, false);			
-										Debug.DrawLine (pointA, hit.point);
+										//	Debug.DrawRay (pointA, pointB, Color.magenta, 0, false);			
+										//	Debug.DrawLine (pointA, hit.point);
 						
 										robotAverageNormal += hit.normal;
 								}
@@ -75,21 +79,27 @@ public class RobotWalker : MonoBehaviour
 				
 				Debug.DrawRay (transform.position, robotAverageNormal, Color.blue, 1.0f);
 				
+				//	pointer.transform.position = transform.position;
 
-				transform.up = robotAverageNormal;
+				//	pointer.transform.rotation = Quaternion.LookRotation (robotAverageNormal, polevector.transform.position - pointer.transform.position);
+				Debug.DrawRay (pointer.transform.position, pointer.transform.up * 10, Color.green);
+				Debug.DrawRay (pointer.transform.position, pointer.transform.forward * 10, Color.blue);
+				Debug.DrawRay (pointer.transform.position, pointer.transform.right * 10, Color.red);
+				
 				
 
-				//transform.rotation = Quaternion.FromToRotation (transform.up, robotAverageNormal);
-				heading += Ctrl.LXStick * 3;
+
+				
+
+
+				//transform.rotation = Quaternion.RotateTowards (transform.rotation, pointer.transform.rotation * Quaternion.Euler (90, 0, 0), 3f);
+
+				transform.up = robotAverageNormal;
 				robot.transform.Rotate (0, Ctrl.LXStick * 5, 0);
 
 		}
 
 
 
-		void groundToSurface ()
-		{
-
-
-		}
+		
 }
