@@ -6,7 +6,9 @@ public class RobotWalker : MonoBehaviour
 		
 		RaycastHit hit;
 		float heading = 0f;
-		GameObject Robot;
+		GameObject robot;
+		int layerMask = 1 << 8;
+		Vector3 robotAverageNormal;
 
 		// Use this for initialization
 		void Start ()
@@ -14,7 +16,7 @@ public class RobotWalker : MonoBehaviour
 				Physics.Raycast (transform.position, -transform.up, out hit, 10000f);
 				transform.position = hit.point;
 				transform.up = hit.normal;
-				Robot = GameObject.Find ("Robot");
+				robot = GameObject.Find ("Robot");
 		}
 	
 		// Update is called once per frame
@@ -22,17 +24,31 @@ public class RobotWalker : MonoBehaviour
 		{
 				
 				
-				transform.localPosition += Robot.transform.forward * -Ctrl.LYStick;
+				transform.localPosition += robot.transform.forward * -Ctrl.LYStick;
 
-				Debug.DrawRay (transform.position, transform.forward * 20, Color.blue, 0, false);
-				Debug.DrawRay (transform.position, transform.up * 20, Color.magenta, 0, false);
+							
 
-				Physics.Raycast (transform.position + transform.up * 4, -transform.up, out hit, 10000f);
+				Physics.Raycast (transform.position + transform.up * 1, -transform.up, out hit, 10000f);
 				transform.position = hit.point;
+				robotAverageNormal = Vector3.zero;
+			
+				for (int i=-10; i<10; i++) {
+						Vector3 pointA = transform.position + transform.up * 1 + robot.transform.forward * i * 1.0f;
+						Vector3 pointB = (-transform.up + -robot.transform.forward * i * 0.1f);
+						if (Physics.Raycast (pointA, pointB, out hit, 100f, layerMask)) {
+								Debug.DrawRay (pointA, pointB, Color.magenta, 0, false);			
+								Debug.DrawLine (pointA, hit.point);
+						
+								robotAverageNormal += hit.normal;
+						}
+
+				}
 				
-				transform.up = hit.normal;
+				Debug.Log (robotAverageNormal);
+				transform.up = robotAverageNormal;
+			
 				heading += Ctrl.LXStick * 3;
-				Robot.transform.Rotate (0, Ctrl.LXStick * 5, 0);
+				robot.transform.Rotate (0, Ctrl.LXStick * 5, 0);
 
 		}
 
