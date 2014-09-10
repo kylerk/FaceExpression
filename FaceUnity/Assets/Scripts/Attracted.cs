@@ -25,13 +25,7 @@ public class Attracted : MonoBehaviour
 		void Update ()
 		{
 
-				/*	foreach (Attractor thisAttractor in Attractors) {
-						float distance = (thisAttractor.transform.position - transform.position).magnitude;
-						speed += (thisAttractor.transform.position - transform.position) * distance * thisAttractor.attractionForce;
-						speed *= friction;
-				}
-			*/
-				//transform.Translate (speed);
+				
 				
 				speed *= friction;
 				transform.rigidbody.AddForce (speed);
