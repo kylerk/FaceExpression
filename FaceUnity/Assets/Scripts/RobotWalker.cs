@@ -15,9 +15,10 @@ public class RobotWalker : MonoBehaviour
 		GameObject robot;
 		int layerMask = 1 << 8;
 		Vector3 robotAverageNormal;
-		public GameObject polevector;
-		GameObject pointer;
+		GameObject pointForward;
+		GameObject pointForward2;
 
+		public float x, y, z, x2, y2, z2;
 		// Use this for initialization
 		void Start ()
 		{
@@ -25,23 +26,22 @@ public class RobotWalker : MonoBehaviour
 				transform.position = hit.point;
 				transform.up = hit.normal;
 				robot = GameObject.Find ("Robot");
-				pointer = new GameObject ();
-				pointer.transform.position = transform.position;
+				pointForward = new GameObject ();
+				pointForward.transform.position = transform.position;
+				pointForward2 = new GameObject ();
+				pointForward.transform.position = transform.position;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
 				
-				Vector3 newposition = transform.position 
+				Vector3 newPositionCheck = transform.position 
 						+ robot.transform.forward * -Ctrl.LYStick * speed
 						+ transform.up * 5.0f;
 							
-				if (Physics.Raycast (newposition, -transform.up, out hit, 1000.0f, layerMask)) {
+				if (Physics.Raycast (newPositionCheck, -transform.up, out hit, 1000.0f, layerMask)) {
 						//	Debug.DrawLine (newposition, hit.point, Color.cyan, 12.0f);
-				
-		
-						
 				}
 				
 				
@@ -53,6 +53,8 @@ public class RobotWalker : MonoBehaviour
 				} else {
 						transform.position += moveVector;
 				}
+
+				//Find the AverageNormal of the surrounding area.
 
 				robotAverageNormal = Vector3.zero;
 				for (int j = -3; j<3; j++) {
@@ -77,26 +79,50 @@ public class RobotWalker : MonoBehaviour
 
 				}
 				
-				Debug.DrawRay (transform.position, robotAverageNormal, Color.blue, 1.0f);
+				//Debug.DrawRay (transform.position, robotAverageNormal, Color.blue, 1.0f);
+			
+
+				pointForward.transform.position = transform.position;
+
+
+
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.up * 10, Color.green);
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.forward * 10, Color.blue);
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.right * 10, Color.red);
 				
-				//	pointer.transform.position = transform.position;
+				pointForward.transform.rotation = Quaternion.LookRotation (robotAverageNormal, pointForward.transform.up);
 
-				//	pointer.transform.rotation = Quaternion.LookRotation (robotAverageNormal, polevector.transform.position - pointer.transform.position);
-				Debug.DrawRay (pointer.transform.position, pointer.transform.up * 10, Color.green);
-				Debug.DrawRay (pointer.transform.position, pointer.transform.forward * 10, Color.blue);
-				Debug.DrawRay (pointer.transform.position, pointer.transform.right * 10, Color.red);
-				
-				
+				pointForward.transform.Rotate (0, 0, Ctrl.LXStick * 5);
+
 
 
 				
 
+		
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.up * 10, Color.green);
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.forward * 10, Color.blue);
+				Debug.DrawRay (pointForward.transform.position, pointForward.transform.right * 10, Color.red);
+				
 
-				//transform.rotation = Quaternion.RotateTowards (transform.rotation, pointer.transform.rotation * Quaternion.Euler (90, 0, 0), 3f);
+				pointForward2.transform.position = pointForward.transform.position;
+				pointForward2.transform.rotation = pointForward.transform.rotation;
+
+				//		pointForward2.transform.Rotate (pointForward2.transform.up, 45f);
+
+				pointForward2.transform.rotation = pointForward2.transform.rotation * Quaternion.Euler (x, y, z) * Quaternion.Euler (x2, y2, z2);
+				
+				Debug.DrawRay (pointForward2.transform.position, pointForward2.transform.up * 20, Color.yellow);
+				Debug.DrawRay (pointForward2.transform.position, pointForward2.transform.forward * 20, Color.cyan);
+				Debug.DrawRay (pointForward2.transform.position, pointForward2.transform.right * 20, Color.magenta);
+
+
+				//transform.rotation = Quaternion.RotateTowards (transform.rotation, pointForward.transform.rotation * Quaternion.Euler (90, 0, 0), 3f);
 
 				transform.up = robotAverageNormal;
-				robot.transform.Rotate (0, Ctrl.LXStick * 5, 0);
+				//robot.transform.Rotate (0, Ctrl.LXStick * 5, 0);
 
+				robot.transform.rotation = pointForward2.transform.rotation;
+				
 		}
 
 
