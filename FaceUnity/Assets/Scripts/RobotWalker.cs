@@ -10,12 +10,12 @@ public class RobotWalker : MonoBehaviour
 		public float distanceDetect;
 		public float positionDistanceDetect;
 		public float lateralAngle;
-		public float speed;
+		public float speed, rotationSpeed;
 		RaycastHit hit;
 		GameObject robot;
 		int layerMask = 1 << 8;
 		Vector3 robotAverageNormal;
-		GameObject pointForward;
+
 
 
 
@@ -25,8 +25,7 @@ public class RobotWalker : MonoBehaviour
 				transform.position = hit.point;
 				transform.up = hit.normal;
 				robot = GameObject.Find ("Robot");
-				pointForward = new GameObject ();
-				pointForward.transform.position = transform.position;
+
 			
 		}
 	
@@ -81,21 +80,11 @@ public class RobotWalker : MonoBehaviour
 				
 				//Debug.DrawRay (transform.position, robotAverageNormal, Color.blue, 1.0f);
 			
-
-				pointForward.transform.position = _transform.position;
-
-				Debug.DrawRay (pointForward.transform.position, pointForward.transform.up * 10, Color.green);
-				Debug.DrawRay (pointForward.transform.position, pointForward.transform.forward * 10, Color.blue);
-				Debug.DrawRay (pointForward.transform.position, pointForward.transform.right * 10, Color.red);
-				
-				pointForward.transform.rotation = Quaternion.LookRotation (robotAverageNormal, pointForward.transform.up) * Quaternion.Euler (0, 0, Ctrl.LXStick * 5);
-
-				//pointForward.transform.Rotate (0, 0, Ctrl.LXStick * 5);
 	
-	
-				
-				transform.rotation = pointForward.transform.rotation * Quaternion.Euler (90, 0, 0) * Quaternion.Euler (0, 180, 0);
-				
+
+				transform.rotation = Quaternion.LookRotation (robotAverageNormal, transform.forward) * Quaternion.Euler (0, 0, Ctrl.LXStick * rotationSpeed) * Quaternion.Euler (90, 0, 0) * Quaternion.Euler (0, 180, 0);
+			
+
 		}
 
 
