@@ -80,8 +80,6 @@ public class RobotWalker : MonoBehaviour
 				
 				//Debug.DrawRay (transform.position, robotAverageNormal, Color.blue, 1.0f);
 			
-	
-
 				transform.rotation = Quaternion.LookRotation (robotAverageNormal, transform.forward) * Quaternion.Euler (0, 0, Ctrl.LXStick * rotationSpeed) * Quaternion.Euler (90, 0, 0) * Quaternion.Euler (0, 180, 0);
 			
 
