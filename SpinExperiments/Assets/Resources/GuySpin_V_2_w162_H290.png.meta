@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 703337e77457a18458779264ea7f4da8
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GuySpin_V_2_w162_H290_0
+    21300002: GuySpin_V_2_w162_H290_1
+    21300004: GuySpin_V_2_w162_H290_2
+    21300006: GuySpin_V_2_w162_H290_3
+    21300008: GuySpin_V_2_w162_H290_4
+    21300010: GuySpin_V_2_w162_H290_5
+    21300012: GuySpin_V_2_w162_H290_6
+    21300014: GuySpin_V_2_w162_H290_7
+    21300016: GuySpin_V_2_w162_H290_8
+    21300018: GuySpin_V_2_w162_H290_9
+    21300020: GuySpin_V_2_w162_H290_10
+    21300022: GuySpin_V_2_w162_H290_11
+    21300024: GuySpin_V_2_w162_H290_12
+    21300026: GuySpin_V_2_w162_H290_13
+    21300028: GuySpin_V_2_w162_H290_14
+    21300030: GuySpin_V_2_w162_H290_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: GuySpin_V_2_w162_H290_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_3
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_4
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_5
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 734
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_8
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_9
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_10
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_11
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 444
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_13
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 154
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_14
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 154
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: GuySpin_V_2_w162_H290_15
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 154
+        width: 162
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
